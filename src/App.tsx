@@ -8,7 +8,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-// import "./scss/custom.scss";
+import "./scss/custom.scss";
 import { Authenticator } from "@aws-amplify/ui-react";
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import { listNotes } from "./graphql/queries";
@@ -56,21 +56,21 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-      <Container fluid>
-        <Row>
-          <Col xs lg="2">
-            tst
+      <Container className="xxl vh-100 d-inline-flex" fluid>
+        <Row className="vh-100">
+          <Col>
+            <div className="vh-100 bd-sidebar">
+              <Container className="vh-100 flex-sm-column">
+                <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+                <Nav className="flex-sm-column flex-fill nav-pills">
+                  <Nav.Link href="#home">Home</Nav.Link>
+                  <Nav.Link href="#features">Features</Nav.Link>
+                  <Nav.Link href="#pricing">Pricing</Nav.Link>
+                </Nav>
+              </Container>
+            </div>
           </Col>
+          {/* Notes app */}
           <Col>
             <h1>My Notes App</h1>
             <input
