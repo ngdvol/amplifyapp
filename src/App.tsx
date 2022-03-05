@@ -56,22 +56,45 @@ function App() {
 
   return (
     <div className="App">
-      <Container className="xxl vh-100 d-inline-flex" fluid>
-        <Row className="vh-100">
-          <Col>
-            <div className="vh-100 bd-sidebar">
-              <Container className="vh-100 flex-sm-column">
-                <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-                <Nav className="flex-sm-column flex-fill nav-pills">
-                  <Nav.Link href="#home">Home</Nav.Link>
-                  <Nav.Link href="#features">Features</Nav.Link>
-                  <Nav.Link href="#pricing">Pricing</Nav.Link>
-                </Nav>
-              </Container>
-            </div>
-          </Col>
+      <Nav className="navbar navbar-expand-md navbar-dark bg-dark">
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <Container className="container-xxl" fluid>
+          <div className="collapse navbar-collapse" id="navbarScroll">
+            <ul className="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
+              <li className="nav-item col-6 col-md-auto">
+                <a className="nav-link p-2" href="/">
+                  Home
+                </a>
+              </li>
+            </ul>
+          </div>
+        </Container>
+      </Nav>
+
+      <Container className="container-xxl" fluid>
+        <div className="d-flex flex-row">
+          <aside className="flex-sm-column p-3 bd-sidebar py-md-4 h-auto">
+            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+            <hr />
+            <Nav className="flex-sm-column nav-pills">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#features">Features</Nav.Link>
+              <Nav.Link href="#pricing">Pricing</Nav.Link>
+            </Nav>
+            <hr />
+          </aside>
           {/* Notes app */}
-          <Col>
+          <div className="flex-sm-column ps-lg-5 my-md-4">
             <h1>My Notes App</h1>
             <input
               onChange={(e) =>
@@ -97,6 +120,8 @@ function App() {
                 </div>
               ))}
             </div>
+            <hr />
+
             <Authenticator loginMechanisms={["email"]}>
               {({ signOut, user }) => (
                 <main>
@@ -105,8 +130,8 @@ function App() {
                 </main>
               )}
             </Authenticator>
-          </Col>
-        </Row>
+          </div>
+        </div>
       </Container>
     </div>
   );

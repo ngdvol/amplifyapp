@@ -1,10 +1,11 @@
 .bd-sidebar {
   min-width: 160px;
-  max-width: 220px;
+  max-width: 280px;
   background: #eee;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  height: calc(100vh - 4rem);
+  //height: calc(100vh - 4rem);
+  height: 100vh;
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";
