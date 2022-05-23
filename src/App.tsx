@@ -100,7 +100,7 @@ function App() {
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-              placeholder="Note name"
+              placeholder="Note name - Tên note"
               value={formData.name}
             />
             <input
