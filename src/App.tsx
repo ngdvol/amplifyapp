@@ -84,7 +84,7 @@ function App() {
       <Container className="container-xxl" fluid>
         <div className="d-flex flex-row">
           <aside className="flex-sm-column p-3 bd-sidebar py-md-4 h-auto">
-            <Navbar.Brand href="#home">My profile</Navbar.Brand>
+            <Navbar.Brand href="#home">My requests</Navbar.Brand>
             <hr />
             <Nav className="flex-sm-column nav-pills">
               <Nav.Link href="#home">Home</Nav.Link>
