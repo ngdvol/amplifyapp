@@ -84,7 +84,7 @@ function App() {
       <Container className="container-xxl" fluid>
         <div className="d-flex flex-row">
           <aside className="flex-sm-column p-3 bd-sidebar py-md-4 h-auto">
-            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+            <Navbar.Brand href="#home">My profile</Navbar.Brand>
             <hr />
             <Nav className="flex-sm-column nav-pills">
               <Nav.Link href="#home">Home</Nav.Link>
@@ -95,41 +95,43 @@ function App() {
           </aside>
           {/* Notes app */}
           <div className="flex-sm-column ps-lg-5 my-md-4">
-            <h1>My Notes App</h1>
+            <h1>My request list</h1>
             <input
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-              placeholder="Note name - Tên note"
+              placeholder="Item name"
               value={formData.name}
             />
             <input
               onChange={(e) =>
                 setFormData({ ...formData, description: e.target.value })
               }
-              placeholder="Note description"
+              placeholder="Item description"
               value={formData.description}
             />
-            <button onClick={createNote}>Create Note - Tạo note</button>
+            <button onClick={createNote}>Create request</button>
             <div style={{ marginBottom: 30 }}>
               {notes.map((note) => (
                 <div key={note.id || note.name}>
                   <h2>{note.name}</h2>
                   <p>{note.description}</p>
-                  <button onClick={() => deleteNote(note)}>Delete note</button>
+                  <button onClick={() => deleteNote(note)}>
+                    Delete request
+                  </button>
                 </div>
               ))}
             </div>
             <hr />
 
-            <Authenticator loginMechanisms={["email"]}>
+            {/* <Authenticator loginMechanisms={["email"]}>
               {({ signOut, user }) => (
                 <main>
                   <h1>Hello {user.username}</h1>
                   <button onClick={signOut}>Sign out</button>
                 </main>
               )}
-            </Authenticator>
+            </Authenticator> */}
           </div>
         </div>
       </Container>
