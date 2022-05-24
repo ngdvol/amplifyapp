@@ -22,7 +22,7 @@ import { couldStartTrivia } from "typescript";
 Amplify.configure(awsExports);
 
 function App() {
-  const initialFormState = { name: "", description: "" };
+  const initialFormState = { name: "", description: "", price: 0.01 };
   const [notes, setNotes] = useState<any[]>([]);
   const [formData, setFormData] = useState(initialFormState);
 
@@ -32,11 +32,12 @@ function App() {
 
   async function fetchNotes() {
     const apiData: any = await API.graphql({ query: listNotes });
+    console.log(apiData.data.listNotes.items);
     setNotes(apiData.data.listNotes.items);
   }
 
   async function createNote() {
-    if (!formData.name || !formData.description) return;
+    if (!formData.name || !formData.description || !formData.price) return;
     await API.graphql({
       query: createNoteMutation,
       variables: { input: formData },
@@ -104,18 +105,34 @@ function App() {
               value={formData.name}
             />
             <input
+              type="text"
               onChange={(e) =>
                 setFormData({ ...formData, description: e.target.value })
               }
               placeholder="Item description"
               value={formData.description}
             />
+            <input
+              type="number"
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  price: isNaN(e.target.valueAsNumber)
+                    ? 0
+                    : e.target.valueAsNumber,
+                })
+              }
+              placeholder="Item price"
+              value={formData.price}
+            />
             <button onClick={createNote}>Create request</button>
             <div style={{ marginBottom: 30 }}>
               {notes.map((note) => (
                 <div key={note.id || note.name}>
-                  <h2>{note.name}</h2>
-                  <p>{note.description}</p>
+                  <h2>Item name: {note.name}</h2>
+                  <p>Description: {note.description}</p>
+                  <p>Price: {note.price}</p>
+                  <p>ID: {note.id}</p>
                   <button onClick={() => deleteNote(note)}>
                     Delete request
                   </button>

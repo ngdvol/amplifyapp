@@ -6,11 +6,13 @@ export type CreateNoteInput = {
   id?: string | null,
   name: string,
   description?: string | null,
+  price: number,
 };
 
 export type ModelNoteConditionInput = {
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
+  price?: ModelFloatInput | null,
   and?: Array< ModelNoteConditionInput | null > | null,
   or?: Array< ModelNoteConditionInput | null > | null,
   not?: ModelNoteConditionInput | null,
@@ -56,11 +58,24 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
+export type ModelFloatInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
 export type Note = {
   __typename: "Note",
   id: string,
   name: string,
   description?: string | null,
+  price: number,
   createdAt: string,
   updatedAt: string,
 };
@@ -69,6 +84,7 @@ export type UpdateNoteInput = {
   id: string,
   name?: string | null,
   description?: string | null,
+  price?: number | null,
 };
 
 export type DeleteNoteInput = {
@@ -79,6 +95,7 @@ export type ModelNoteFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
+  price?: ModelFloatInput | null,
   and?: Array< ModelNoteFilterInput | null > | null,
   or?: Array< ModelNoteFilterInput | null > | null,
   not?: ModelNoteFilterInput | null,
@@ -117,6 +134,7 @@ export type CreateNoteMutation = {
     id: string,
     name: string,
     description?: string | null,
+    price: number,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -133,6 +151,7 @@ export type UpdateNoteMutation = {
     id: string,
     name: string,
     description?: string | null,
+    price: number,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -149,6 +168,7 @@ export type DeleteNoteMutation = {
     id: string,
     name: string,
     description?: string | null,
+    price: number,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -164,6 +184,7 @@ export type GetNoteQuery = {
     id: string,
     name: string,
     description?: string | null,
+    price: number,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -183,6 +204,7 @@ export type ListNotesQuery = {
       id: string,
       name: string,
       description?: string | null,
+      price: number,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -196,6 +218,7 @@ export type OnCreateNoteSubscription = {
     id: string,
     name: string,
     description?: string | null,
+    price: number,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -207,6 +230,7 @@ export type OnUpdateNoteSubscription = {
     id: string,
     name: string,
     description?: string | null,
+    price: number,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -218,6 +242,7 @@ export type OnDeleteNoteSubscription = {
     id: string,
     name: string,
     description?: string | null,
+    price: number,
     createdAt: string,
     updatedAt: string,
   } | null,
