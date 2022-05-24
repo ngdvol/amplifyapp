@@ -110,7 +110,7 @@ function App() {
               placeholder="Note description"
               value={formData.description}
             />
-            <button onClick={createNote}>Create Note</button>
+            <button onClick={createNote}>Create Note - Tạo note</button>
             <div style={{ marginBottom: 30 }}>
               {notes.map((note) => (
                 <div key={note.id || note.name}>
