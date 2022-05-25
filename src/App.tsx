@@ -135,6 +135,16 @@ function App() {
                       </Form.Group>
 
                       <Form.Group className="">
+                        <Form.Label>Photos</Form.Label>
+                        <Card style={{ width: "10rem" }}>
+                          <Card.Img variant="top" src="holder.js/100px180" />
+                          <Card.Body>
+                            <Button variant="primary">Remove</Button>
+                          </Card.Body>
+                        </Card>
+                      </Form.Group>
+
+                      <Form.Group className="">
                         <Form.Label>Item description</Form.Label>
                         <Form.Control
                           type="text"
@@ -150,6 +160,46 @@ function App() {
                         <Form.Text className="text-muted">
                           Enter item description
                         </Form.Text>
+                      </Form.Group>
+
+                      <Form.Group>
+                        <Row>
+                          <Col>
+                            <Form.Label>From</Form.Label>
+                            <Form.Control
+                              type="text"
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  description: e.target.value,
+                                })
+                              }
+                              placeholder="United States"
+                              value={formData.description}
+                            />
+                            <Form.Text className="text-muted">
+                              From location
+                            </Form.Text>
+                          </Col>
+
+                          <Col>
+                            <Form.Label>To</Form.Label>
+                            <Form.Control
+                              type="text"
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  description: e.target.value,
+                                })
+                              }
+                              placeholder="Singapore"
+                              value={formData.description}
+                            />
+                            <Form.Text className="text-muted">
+                              To location
+                            </Form.Text>
+                          </Col>
+                        </Row>
                       </Form.Group>
 
                       <Form.Group className="">

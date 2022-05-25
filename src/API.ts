@@ -17,7 +17,7 @@ export type ModelRequestConditionInput = {
   description?: ModelStringInput | null,
   price?: ModelFloatInput | null,
   note?: ModelStringInput | null,
-  quantity?: ModelIntInput | null,
+  quantity?: ModelFloatInput | null,
   isOpen?: ModelBooleanInput | null,
   and?: Array< ModelRequestConditionInput | null > | null,
   or?: Array< ModelRequestConditionInput | null > | null,
@@ -76,18 +76,6 @@ export type ModelFloatInput = {
   attributeType?: ModelAttributeTypes | null,
 };
 
-export type ModelIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
 export type ModelBooleanInput = {
   ne?: boolean | null,
   eq?: boolean | null,
@@ -128,7 +116,7 @@ export type ModelRequestFilterInput = {
   description?: ModelStringInput | null,
   price?: ModelFloatInput | null,
   note?: ModelStringInput | null,
-  quantity?: ModelIntInput | null,
+  quantity?: ModelFloatInput | null,
   isOpen?: ModelBooleanInput | null,
   and?: Array< ModelRequestFilterInput | null > | null,
   or?: Array< ModelRequestFilterInput | null > | null,
