@@ -10,6 +10,8 @@ export const getRequest = /* GraphQL */ `
       description
       price
       note
+      quantity
+      isOpen
       createdAt
       updatedAt
     }
@@ -28,6 +30,8 @@ export const listRequests = /* GraphQL */ `
         description
         price
         note
+        quantity
+        isOpen
         createdAt
         updatedAt
       }

@@ -9,4 +9,6 @@ type Request @model {
   description: String
   price: Float!
   note: String
+  quantity: Float!
+  isOpen: Boolean!
 }

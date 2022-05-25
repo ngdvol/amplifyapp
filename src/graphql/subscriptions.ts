@@ -10,6 +10,8 @@ export const onCreateRequest = /* GraphQL */ `
       description
       price
       note
+      quantity
+      isOpen
       createdAt
       updatedAt
     }
@@ -23,6 +25,8 @@ export const onUpdateRequest = /* GraphQL */ `
       description
       price
       note
+      quantity
+      isOpen
       createdAt
       updatedAt
     }
@@ -36,6 +40,8 @@ export const onDeleteRequest = /* GraphQL */ `
       description
       price
       note
+      quantity
+      isOpen
       createdAt
       updatedAt
     }

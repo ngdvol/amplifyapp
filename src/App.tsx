@@ -27,7 +27,13 @@ import { couldStartTrivia } from "typescript";
 Amplify.configure(awsExports);
 
 function App() {
-  const initialFormState = { name: "", description: "", price: 0.01 };
+  const initialFormState = {
+    name: "",
+    description: "",
+    price: 0.01,
+    quantity: 1,
+    isOpen: true,
+  };
   const [Requests, setRequests] = useState<any[]>([]);
   const [formData, setFormData] = useState(initialFormState);
 
@@ -42,7 +48,14 @@ function App() {
   }
 
   async function createRequest() {
-    if (!formData.name || !formData.description || !formData.price) return;
+    if (
+      !formData.name ||
+      !formData.description ||
+      !formData.price ||
+      !formData.quantity ||
+      !formData.isOpen
+    )
+      return;
     await API.graphql({
       query: createRequestMutation,
       variables: { input: formData },
@@ -140,23 +153,42 @@ function App() {
                       </Form.Group>
 
                       <Form.Group className="">
-                        <Form.Group className="">
-                          <Form.Label>Item price</Form.Label>
-                          <Form.Control
-                            type="number"
-                            onChange={(e) =>
-                              setFormData({
-                                ...formData,
-                                price: Number(e.target.value),
-                              })
-                            }
-                            placeholder="Item price"
-                            value={formData.price}
-                          />
-                          <Form.Text className="text-muted">
-                            Enter item price
-                          </Form.Text>
-                        </Form.Group>
+                        <Form.Label>Item price</Form.Label>
+                        <Form.Control
+                          type="number"
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              price: Number(e.target.value),
+                            })
+                          }
+                          placeholder="Item price"
+                          value={formData.price}
+                        />
+                        <Form.Text className="text-muted">
+                          Enter item price
+                        </Form.Text>
+                      </Form.Group>
+
+                      <Form.Group className="">
+                        <Form.Label>Quantity</Form.Label>
+                        <Form.Control
+                          type="number"
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              quantity: Number(e.target.value),
+                            })
+                          }
+                          placeholder="1"
+                          value={formData.quantity}
+                        />
+                        <Form.Text className="text-muted">
+                          How much/How many do you want to buy?
+                        </Form.Text>
+                      </Form.Group>
+
+                      <Form.Group className="">
                         <Form.Check type="checkbox" label="Test" />
                         <Button
                           className="col-12"
@@ -180,7 +212,14 @@ function App() {
                               <Card.Body>
                                 {/* <Card.Title>{Request.name}</Card.Title> */}
                                 <Card.Text>{Request.description}</Card.Text>
-                                <Card.Text>{Request.price}</Card.Text>
+                                <Card.Text>${Request.price}</Card.Text>
+                                <Card.Text>
+                                  Quantity: {Request.quantity}
+                                </Card.Text>
+                                <Card.Text>
+                                  Status:{" "}
+                                  {Request.isOpen ? "Waiting offer" : "Closed"}
+                                </Card.Text>
                                 <Row>
                                   <Button
                                     onClick={() => deleteRequest(Request)}
@@ -229,7 +268,14 @@ function App() {
                               <Card.Body>
                                 {/* <Card.Title>{Request.name}</Card.Title> */}
                                 <Card.Text>{Request.description}</Card.Text>
-                                <Card.Text>{Request.price}</Card.Text>
+                                <Card.Text>${Request.price}</Card.Text>
+                                <Card.Text>
+                                  Quantity: {Request.quantity}
+                                </Card.Text>
+                                <Card.Text>
+                                  Status:{" "}
+                                  {Request.isOpen ? "Waiting offer" : "Closed"}
+                                </Card.Text>
                                 <Row>
                                   <Button onClick={() => {}} variant="primary">
                                     Offer

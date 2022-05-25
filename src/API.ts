@@ -8,6 +8,8 @@ export type CreateRequestInput = {
   description?: string | null,
   price: number,
   note?: string | null,
+  quantity: number,
+  isOpen: boolean,
 };
 
 export type ModelRequestConditionInput = {
@@ -15,6 +17,8 @@ export type ModelRequestConditionInput = {
   description?: ModelStringInput | null,
   price?: ModelFloatInput | null,
   note?: ModelStringInput | null,
+  quantity?: ModelIntInput | null,
+  isOpen?: ModelBooleanInput | null,
   and?: Array< ModelRequestConditionInput | null > | null,
   or?: Array< ModelRequestConditionInput | null > | null,
   not?: ModelRequestConditionInput | null,
@@ -72,6 +76,25 @@ export type ModelFloatInput = {
   attributeType?: ModelAttributeTypes | null,
 };
 
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
 export type Request = {
   __typename: "Request",
   id: string,
@@ -79,6 +102,8 @@ export type Request = {
   description?: string | null,
   price: number,
   note?: string | null,
+  quantity: number,
+  isOpen: boolean,
   createdAt: string,
   updatedAt: string,
 };
@@ -89,6 +114,8 @@ export type UpdateRequestInput = {
   description?: string | null,
   price?: number | null,
   note?: string | null,
+  quantity?: number | null,
+  isOpen?: boolean | null,
 };
 
 export type DeleteRequestInput = {
@@ -101,6 +128,8 @@ export type ModelRequestFilterInput = {
   description?: ModelStringInput | null,
   price?: ModelFloatInput | null,
   note?: ModelStringInput | null,
+  quantity?: ModelIntInput | null,
+  isOpen?: ModelBooleanInput | null,
   and?: Array< ModelRequestFilterInput | null > | null,
   or?: Array< ModelRequestFilterInput | null > | null,
   not?: ModelRequestFilterInput | null,
@@ -141,6 +170,8 @@ export type CreateRequestMutation = {
     description?: string | null,
     price: number,
     note?: string | null,
+    quantity: number,
+    isOpen: boolean,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -159,6 +190,8 @@ export type UpdateRequestMutation = {
     description?: string | null,
     price: number,
     note?: string | null,
+    quantity: number,
+    isOpen: boolean,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -177,6 +210,8 @@ export type DeleteRequestMutation = {
     description?: string | null,
     price: number,
     note?: string | null,
+    quantity: number,
+    isOpen: boolean,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -194,6 +229,8 @@ export type GetRequestQuery = {
     description?: string | null,
     price: number,
     note?: string | null,
+    quantity: number,
+    isOpen: boolean,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -215,6 +252,8 @@ export type ListRequestsQuery = {
       description?: string | null,
       price: number,
       note?: string | null,
+      quantity: number,
+      isOpen: boolean,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -230,6 +269,8 @@ export type OnCreateRequestSubscription = {
     description?: string | null,
     price: number,
     note?: string | null,
+    quantity: number,
+    isOpen: boolean,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -243,6 +284,8 @@ export type OnUpdateRequestSubscription = {
     description?: string | null,
     price: number,
     note?: string | null,
+    quantity: number,
+    isOpen: boolean,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -256,6 +299,8 @@ export type OnDeleteRequestSubscription = {
     description?: string | null,
     price: number,
     note?: string | null,
+    quantity: number,
+    isOpen: boolean,
     createdAt: string,
     updatedAt: string,
   } | null,
