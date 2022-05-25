@@ -90,10 +90,7 @@ function App() {
 
       <Container className="container-xxl" fluid>
         <div className="d-flex flex-row">
-          <aside
-            className="flex-sm-column p-3 bd-sidebar py-md-4 h-auto collapse navbar-collapse"
-            id="navbarScroll"
-          >
+          <aside className="flex-sm-column p-3 bd-sidebar py-md-4 h-auto d-none d-sm-block">
             <Navbar.Brand>Buying item</Navbar.Brand>
             <hr />
             <Nav className="flex-sm-column nav-pills">
