@@ -30,7 +30,7 @@ function App() {
   const initialFormState = {
     name: "",
     description: "",
-    price: 0.01,
+    price: 0.0,
     quantity: 1,
     isOpen: true,
   };
@@ -134,20 +134,44 @@ function App() {
                         </Form.Text>
                       </Form.Group>
 
-                      <Form.Group className="">
-                        <Form.Label>Photos</Form.Label>
-                        <Card style={{ width: "10rem" }}>
-                          <Card.Img variant="top" src="holder.js/100px180" />
-                          <Card.Body>
-                            <Button variant="primary">Remove</Button>
-                          </Card.Body>
-                        </Card>
+                      <Form.Group>
+                        <Row className="g-0">
+                          <Form.Label>Photos</Form.Label>
+                          <Card
+                            className="col-md-auto"
+                            style={{ width: "10rem" }}
+                          >
+                            <Card.Img
+                              variant="top"
+                              src="holder.js/100px180"
+                              style={{ width: "10rem" }}
+                            />
+                            <Card.Body>
+                              <Button variant="primary">Remove</Button>
+                            </Card.Body>
+                          </Card>
+                          <Card
+                            className="col-md-auto"
+                            style={{ width: "10rem" }}
+                          >
+                            <Card.Img
+                              variant="top"
+                              src="holder.js/100px180"
+                              style={{ width: "10rem" }}
+                            />
+                            <Card.Body>
+                              <Button variant="primary">Remove</Button>
+                            </Card.Body>
+                          </Card>
+                        </Row>
                       </Form.Group>
 
                       <Form.Group className="">
                         <Form.Label>Item description</Form.Label>
                         <Form.Control
                           type="text"
+                          as="textarea"
+                          rows={3}
                           onChange={(e) =>
                             setFormData({
                               ...formData,
@@ -202,44 +226,49 @@ function App() {
                         </Row>
                       </Form.Group>
 
-                      <Form.Group className="">
-                        <Form.Label>Item price</Form.Label>
-                        <Form.Control
-                          type="number"
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              price: Number(e.target.value),
-                            })
-                          }
-                          placeholder="Item price"
-                          value={formData.price}
-                        />
-                        <Form.Text className="text-muted">
-                          Enter item price
-                        </Form.Text>
+                      <Form.Group>
+                        <Row>
+                          <Col>
+                            <Form.Label>Item price</Form.Label>
+                            <Form.Control
+                              type="number"
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  price: Number(e.target.value),
+                                })
+                              }
+                              placeholder="Item price"
+                              value={formData.price}
+                            />
+                            <Form.Text className="text-muted">
+                              Enter item price
+                            </Form.Text>
+                          </Col>
+                          <Col>
+                            <Form.Label>Quantity</Form.Label>
+                            <Form.Control
+                              type="number"
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  quantity: Number(e.target.value),
+                                })
+                              }
+                              placeholder="1"
+                              value={formData.quantity}
+                            />
+                            <Form.Text className="text-muted">
+                              How much/How many do you want to buy?
+                            </Form.Text>
+                          </Col>
+                        </Row>
                       </Form.Group>
 
-                      <Form.Group className="">
-                        <Form.Label>Quantity</Form.Label>
-                        <Form.Control
-                          type="number"
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              quantity: Number(e.target.value),
-                            })
-                          }
-                          placeholder="1"
-                          value={formData.quantity}
-                        />
-                        <Form.Text className="text-muted">
-                          How much/How many do you want to buy?
-                        </Form.Text>
-                      </Form.Group>
+                      <Form.Group className=""></Form.Group>
 
                       <Form.Group className="">
-                        <Form.Check type="checkbox" label="Test" />
+                        {/* <Form.Check type="checkbox" label="Test" /> */}
                         <Button
                           className="col-12"
                           variant="primary"
