@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Col from "react-bootstrap/Col";
@@ -63,49 +64,40 @@ function App() {
 
   return (
     <div className="App">
-      <Nav className="navbar navbar-expand-md navbar-dark bg-dark">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarScroll"
-          aria-controls="navbarScroll"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <Container className="container-xxl" fluid>
-          <div className="collapse navbar-collapse" id="navbarScroll">
-            <ul className="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0 mr-auto">
-              <li className="nav-item col-6 col-md-auto">
-                <a className="nav-link p-2" href="/">
-                  Home
-                </a>
-              </li>
-            </ul>
-          </div>
+      <Navbar bg="light" expand="lg">
+        <Container>
+          <Navbar.Brand href="#home">Proof of concept</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/">Buying item</Nav.Link>
+              <Nav.Link href="/findOrders">Add item request</Nav.Link>
+              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  Another action
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
-      </Nav>
-
+      </Navbar>
       <Container className="container-xxl" fluid>
         <div className="d-flex flex-row">
-          <aside className="flex-sm-column p-3 bd-sidebar py-md-4 h-auto d-none d-sm-block">
+          {/* <aside className="flex-sm-column p-3 bd-sidebar py-md-4 h-auto d-none d-sm-block">
             <Navbar.Brand>Buying item</Navbar.Brand>
             <hr />
             <Nav className="flex-sm-column nav-pills">
               <Nav.Link href="/">Add item request</Nav.Link>
-              {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
             </Nav>
             <hr />
             <Navbar.Brand>Traveller</Navbar.Brand>
             <hr />
             <Nav className="flex-sm-column nav-pills">
               <Nav.Link href="findOrders">Submit offer</Nav.Link>
-              {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
             </Nav>
             <hr />
-          </aside>
+          </aside> */}
           <BrowserRouter>
             <Routes>
               <Route
@@ -189,12 +181,14 @@ function App() {
                                 {/* <Card.Title>{Request.name}</Card.Title> */}
                                 <Card.Text>{Request.description}</Card.Text>
                                 <Card.Text>{Request.price}</Card.Text>
-                                <Button
-                                  onClick={() => deleteRequest(Request)}
-                                  variant="primary"
-                                >
-                                  Delete request
-                                </Button>
+                                <Row>
+                                  <Button
+                                    onClick={() => deleteRequest(Request)}
+                                    variant="primary"
+                                  >
+                                    Delete request
+                                  </Button>
+                                </Row>
                               </Card.Body>
                               <Card.Footer className="text-muted">
                                 2 days ago
@@ -236,9 +230,11 @@ function App() {
                                 {/* <Card.Title>{Request.name}</Card.Title> */}
                                 <Card.Text>{Request.description}</Card.Text>
                                 <Card.Text>{Request.price}</Card.Text>
-                                <Button onClick={() => {}} variant="primary">
-                                  Offer
-                                </Button>
+                                <Row>
+                                  <Button onClick={() => {}} variant="primary">
+                                    Offer
+                                  </Button>
+                                </Row>
                               </Card.Body>
                               <Card.Footer className="text-muted">
                                 2 days ago
