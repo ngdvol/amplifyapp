@@ -77,7 +77,7 @@ function App() {
         </button>
         <Container className="container-xxl" fluid>
           <div className="collapse navbar-collapse" id="navbarScroll">
-            <ul className="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
+            <ul className="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0 mr-auto">
               <li className="nav-item col-6 col-md-auto">
                 <a className="nav-link p-2" href="/">
                   Home
@@ -90,7 +90,10 @@ function App() {
 
       <Container className="container-xxl" fluid>
         <div className="d-flex flex-row">
-          <aside className="flex-sm-column p-3 bd-sidebar py-md-4 h-auto">
+          <aside
+            className="flex-sm-column p-3 bd-sidebar py-md-4 h-auto collapse navbar-collapse"
+            id="navbarScroll"
+          >
             <Navbar.Brand>Buying item</Navbar.Brand>
             <hr />
             <Nav className="flex-sm-column nav-pills">
@@ -111,10 +114,10 @@ function App() {
               <Route
                 path="/"
                 element={
-                  <div className="flex-sm-column ps-lg-5 my-md-4">
+                  <div className="flex-sm-column ps-lg-5 my-4 ms-3">
                     <h1>Add new item request</h1>
-                    <Form>
-                      <Form.Group className="mb-3">
+                    <Form className="row g-3 col-md-12">
+                      <Form.Group>
                         <Form.Label>Item name</Form.Label>
                         <Form.Control
                           type="text"
@@ -129,7 +132,7 @@ function App() {
                         </Form.Text>
                       </Form.Group>
 
-                      <Form.Group className="mb-3">
+                      <Form.Group className="">
                         <Form.Label>Item description</Form.Label>
                         <Form.Control
                           type="text"
@@ -147,8 +150,8 @@ function App() {
                         </Form.Text>
                       </Form.Group>
 
-                      <Form.Group className="mb-3">
-                        <Form.Group className="mb-3">
+                      <Form.Group className="">
+                        <Form.Group className="">
                           <Form.Label>Item price</Form.Label>
                           <Form.Control
                             type="number"
@@ -165,13 +168,15 @@ function App() {
                             Enter item price
                           </Form.Text>
                         </Form.Group>
-                        <Form.Group className="mb-3"></Form.Group>
-
                         <Form.Check type="checkbox" label="Test" />
+                        <Button
+                          className="col-12"
+                          variant="primary"
+                          onClick={createRequest}
+                        >
+                          Submit
+                        </Button>{" "}
                       </Form.Group>
-                      <Button variant="primary" onClick={createRequest}>
-                        Submit
-                      </Button>
                     </Form>
                     <div style={{ marginTop: 30, marginBottom: 30 }}>
                       <Row className="g-2">
