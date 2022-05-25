@@ -2,20 +2,22 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateNoteInput = {
+export type CreateRequestInput = {
   id?: string | null,
   name: string,
   description?: string | null,
   price: number,
+  note?: string | null,
 };
 
-export type ModelNoteConditionInput = {
+export type ModelRequestConditionInput = {
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
   price?: ModelFloatInput | null,
-  and?: Array< ModelNoteConditionInput | null > | null,
-  or?: Array< ModelNoteConditionInput | null > | null,
-  not?: ModelNoteConditionInput | null,
+  note?: ModelStringInput | null,
+  and?: Array< ModelRequestConditionInput | null > | null,
+  or?: Array< ModelRequestConditionInput | null > | null,
+  not?: ModelRequestConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -70,35 +72,38 @@ export type ModelFloatInput = {
   attributeType?: ModelAttributeTypes | null,
 };
 
-export type Note = {
-  __typename: "Note",
+export type Request = {
+  __typename: "Request",
   id: string,
   name: string,
   description?: string | null,
   price: number,
+  note?: string | null,
   createdAt: string,
   updatedAt: string,
 };
 
-export type UpdateNoteInput = {
+export type UpdateRequestInput = {
   id: string,
   name?: string | null,
   description?: string | null,
   price?: number | null,
+  note?: string | null,
 };
 
-export type DeleteNoteInput = {
+export type DeleteRequestInput = {
   id: string,
 };
 
-export type ModelNoteFilterInput = {
+export type ModelRequestFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
   price?: ModelFloatInput | null,
-  and?: Array< ModelNoteFilterInput | null > | null,
-  or?: Array< ModelNoteFilterInput | null > | null,
-  not?: ModelNoteFilterInput | null,
+  note?: ModelStringInput | null,
+  and?: Array< ModelRequestFilterInput | null > | null,
+  or?: Array< ModelRequestFilterInput | null > | null,
+  not?: ModelRequestFilterInput | null,
 };
 
 export type ModelIDInput = {
@@ -117,94 +122,99 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type ModelNoteConnection = {
-  __typename: "ModelNoteConnection",
-  items:  Array<Note | null >,
+export type ModelRequestConnection = {
+  __typename: "ModelRequestConnection",
+  items:  Array<Request | null >,
   nextToken?: string | null,
 };
 
-export type CreateNoteMutationVariables = {
-  input: CreateNoteInput,
-  condition?: ModelNoteConditionInput | null,
+export type CreateRequestMutationVariables = {
+  input: CreateRequestInput,
+  condition?: ModelRequestConditionInput | null,
 };
 
-export type CreateNoteMutation = {
-  createNote?:  {
-    __typename: "Note",
+export type CreateRequestMutation = {
+  createRequest?:  {
+    __typename: "Request",
     id: string,
     name: string,
     description?: string | null,
     price: number,
+    note?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type UpdateNoteMutationVariables = {
-  input: UpdateNoteInput,
-  condition?: ModelNoteConditionInput | null,
+export type UpdateRequestMutationVariables = {
+  input: UpdateRequestInput,
+  condition?: ModelRequestConditionInput | null,
 };
 
-export type UpdateNoteMutation = {
-  updateNote?:  {
-    __typename: "Note",
+export type UpdateRequestMutation = {
+  updateRequest?:  {
+    __typename: "Request",
     id: string,
     name: string,
     description?: string | null,
     price: number,
+    note?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type DeleteNoteMutationVariables = {
-  input: DeleteNoteInput,
-  condition?: ModelNoteConditionInput | null,
+export type DeleteRequestMutationVariables = {
+  input: DeleteRequestInput,
+  condition?: ModelRequestConditionInput | null,
 };
 
-export type DeleteNoteMutation = {
-  deleteNote?:  {
-    __typename: "Note",
+export type DeleteRequestMutation = {
+  deleteRequest?:  {
+    __typename: "Request",
     id: string,
     name: string,
     description?: string | null,
     price: number,
+    note?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type GetNoteQueryVariables = {
+export type GetRequestQueryVariables = {
   id: string,
 };
 
-export type GetNoteQuery = {
-  getNote?:  {
-    __typename: "Note",
+export type GetRequestQuery = {
+  getRequest?:  {
+    __typename: "Request",
     id: string,
     name: string,
     description?: string | null,
     price: number,
+    note?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type ListNotesQueryVariables = {
-  filter?: ModelNoteFilterInput | null,
+export type ListRequestsQueryVariables = {
+  filter?: ModelRequestFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListNotesQuery = {
-  listNotes?:  {
-    __typename: "ModelNoteConnection",
+export type ListRequestsQuery = {
+  listRequests?:  {
+    __typename: "ModelRequestConnection",
     items:  Array< {
-      __typename: "Note",
+      __typename: "Request",
       id: string,
       name: string,
       description?: string | null,
       price: number,
+      note?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -212,37 +222,40 @@ export type ListNotesQuery = {
   } | null,
 };
 
-export type OnCreateNoteSubscription = {
-  onCreateNote?:  {
-    __typename: "Note",
+export type OnCreateRequestSubscription = {
+  onCreateRequest?:  {
+    __typename: "Request",
     id: string,
     name: string,
     description?: string | null,
     price: number,
+    note?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnUpdateNoteSubscription = {
-  onUpdateNote?:  {
-    __typename: "Note",
+export type OnUpdateRequestSubscription = {
+  onUpdateRequest?:  {
+    __typename: "Request",
     id: string,
     name: string,
     description?: string | null,
     price: number,
+    note?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnDeleteNoteSubscription = {
-  onDeleteNote?:  {
-    __typename: "Note",
+export type OnDeleteRequestSubscription = {
+  onDeleteRequest?:  {
+    __typename: "Request",
     id: string,
     name: string,
     description?: string | null,
     price: number,
+    note?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,

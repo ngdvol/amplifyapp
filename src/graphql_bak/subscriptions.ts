@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -7,6 +8,8 @@ export const onCreateNote = /* GraphQL */ `
       id
       name
       description
+      price
+      note
       createdAt
       updatedAt
     }
@@ -18,6 +21,8 @@ export const onUpdateNote = /* GraphQL */ `
       id
       name
       description
+      price
+      note
       createdAt
       updatedAt
     }
@@ -29,6 +34,8 @@ export const onDeleteNote = /* GraphQL */ `
       id
       name
       description
+      price
+      note
       createdAt
       updatedAt
     }

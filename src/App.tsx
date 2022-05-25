@@ -3,18 +3,22 @@ import logo from "./logo.svg";
 //import './App.css';
 //import "@aws-amplify/ui-react/styles.css";
 import "bootstrap/dist/css/bootstrap.css";
+import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./scss/custom.scss";
 import { Authenticator } from "@aws-amplify/ui-react";
 import Amplify, { API, graphqlOperation } from "aws-amplify";
-import { listNotes } from "./graphql/queries";
+import { listRequests } from "./graphql/queries";
 import {
-  createNote as createNoteMutation,
-  deleteNote as deleteNoteMutation,
+  createRequest as createRequestMutation,
+  deleteRequest as deleteRequestMutation,
 } from "./graphql/mutations";
 
 import awsExports from "./aws-exports";
@@ -23,34 +27,36 @@ Amplify.configure(awsExports);
 
 function App() {
   const initialFormState = { name: "", description: "", price: 0.01 };
-  const [notes, setNotes] = useState<any[]>([]);
+  const [Requests, setRequests] = useState<any[]>([]);
   const [formData, setFormData] = useState(initialFormState);
 
   useEffect(() => {
-    fetchNotes();
+    fetchRequests();
   }, []);
 
-  async function fetchNotes() {
-    const apiData: any = await API.graphql({ query: listNotes });
-    console.log(apiData.data.listNotes.items);
-    setNotes(apiData.data.listNotes.items);
+  async function fetchRequests() {
+    const apiData: any = await API.graphql({ query: listRequests });
+    console.log(apiData.data.listRequests.items);
+    setRequests(apiData.data.listRequests.items);
   }
 
-  async function createNote() {
+  async function createRequest() {
     if (!formData.name || !formData.description || !formData.price) return;
     await API.graphql({
-      query: createNoteMutation,
+      query: createRequestMutation,
       variables: { input: formData },
     });
-    setNotes([...notes, formData]);
+    setRequests([...Requests, formData]);
     setFormData(initialFormState);
   }
 
-  async function deleteNote({ id }: any) {
-    const newNotesArray = notes.filter((note: { id: any }) => note.id !== id);
-    setNotes(newNotesArray);
+  async function deleteRequest({ id }: any) {
+    const newRequestsArray = Requests.filter(
+      (Request: { id: any }) => Request.id !== id
+    );
+    setRequests(newRequestsArray);
     await API.graphql({
-      query: deleteNoteMutation,
+      query: deleteRequestMutation,
       variables: { input: { id } },
     });
   }
@@ -85,71 +91,176 @@ function App() {
       <Container className="container-xxl" fluid>
         <div className="d-flex flex-row">
           <aside className="flex-sm-column p-3 bd-sidebar py-md-4 h-auto">
-            <Navbar.Brand href="#home">My requests</Navbar.Brand>
+            <Navbar.Brand>Buying item</Navbar.Brand>
             <hr />
             <Nav className="flex-sm-column nav-pills">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Nav.Link href="/">Add item request</Nav.Link>
+              {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
+            </Nav>
+            <hr />
+            <Navbar.Brand>Traveller</Navbar.Brand>
+            <hr />
+            <Nav className="flex-sm-column nav-pills">
+              <Nav.Link href="findOrders">Submit offer</Nav.Link>
+              {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
             </Nav>
             <hr />
           </aside>
-          {/* Notes app */}
-          <div className="flex-sm-column ps-lg-5 my-md-4">
-            <h1>My request list</h1>
-            <input
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
-              placeholder="Item name"
-              value={formData.name}
-            />
-            <input
-              type="text"
-              onChange={(e) =>
-                setFormData({ ...formData, description: e.target.value })
-              }
-              placeholder="Item description"
-              value={formData.description}
-            />
-            <input
-              type="number"
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  price: isNaN(e.target.valueAsNumber)
-                    ? 0
-                    : e.target.valueAsNumber,
-                })
-              }
-              placeholder="Item price"
-              value={formData.price}
-            />
-            <button onClick={createNote}>Create request</button>
-            <div style={{ marginBottom: 30 }}>
-              {notes.map((note) => (
-                <div key={note.id || note.name}>
-                  <h2>Item name: {note.name}</h2>
-                  <p>Description: {note.description}</p>
-                  <p>Price: {note.price}</p>
-                  <p>ID: {note.id}</p>
-                  <button onClick={() => deleteNote(note)}>
-                    Delete request
-                  </button>
-                </div>
-              ))}
-            </div>
-            <hr />
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <div className="flex-sm-column ps-lg-5 my-md-4">
+                    <h1>Add new item request</h1>
+                    <Form>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Item name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Item name"
+                          onChange={(e) =>
+                            setFormData({ ...formData, name: e.target.value })
+                          }
+                          value={formData.name}
+                        />
+                        <Form.Text className="text-muted">
+                          Enter item name
+                        </Form.Text>
+                      </Form.Group>
 
-            {/* <Authenticator loginMechanisms={["email"]}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Item description</Form.Label>
+                        <Form.Control
+                          type="text"
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              description: e.target.value,
+                            })
+                          }
+                          placeholder="Item description"
+                          value={formData.description}
+                        />
+                        <Form.Text className="text-muted">
+                          Enter item description
+                        </Form.Text>
+                      </Form.Group>
+
+                      <Form.Group className="mb-3">
+                        <Form.Group className="mb-3">
+                          <Form.Label>Item price</Form.Label>
+                          <Form.Control
+                            type="number"
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                price: Number(e.target.value),
+                              })
+                            }
+                            placeholder="Item price"
+                            value={formData.price}
+                          />
+                          <Form.Text className="text-muted">
+                            Enter item price
+                          </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3"></Form.Group>
+
+                        <Form.Check type="checkbox" label="Test" />
+                      </Form.Group>
+                      <Button variant="primary" onClick={createRequest}>
+                        Submit
+                      </Button>
+                    </Form>
+                    <div style={{ marginTop: 30, marginBottom: 30 }}>
+                      <Row className="g-2">
+                        {Requests.map((Request) => (
+                          <Col>
+                            <Card
+                              key={Request.id || Request.name}
+                              style={{ width: "18rem" }}
+                            >
+                              {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+                              <Card.Header>{Request.name}</Card.Header>
+                              <Card.Body>
+                                {/* <Card.Title>{Request.name}</Card.Title> */}
+                                <Card.Text>{Request.description}</Card.Text>
+                                <Card.Text>{Request.price}</Card.Text>
+                                <Button
+                                  onClick={() => deleteRequest(Request)}
+                                  variant="primary"
+                                >
+                                  Delete request
+                                </Button>
+                              </Card.Body>
+                              <Card.Footer className="text-muted">
+                                2 days ago
+                              </Card.Footer>
+                            </Card>
+                          </Col>
+                        ))}
+                      </Row>
+                    </div>
+                    <hr />
+
+                    {/* <Authenticator loginMechanisms={["email"]}>
               {({ signOut, user }) => (
                 <main>
                   <h1>Hello {user.username}</h1>
-                  <button onClick={signOut}>Sign out</button>
+                  <button onClick={signOuあんt}>Sign out</button>
                 </main>
               )}
             </Authenticator> */}
-          </div>
+                  </div>
+                }
+              ></Route>
+              <Route
+                path="/findOrders"
+                element={
+                  <div className="flex-sm-column ps-lg-5 my-md-4">
+                    <h1>Submit offer</h1>
+                    <div style={{ marginTop: 30, marginBottom: 30 }}>
+                      <Row className="g-2">
+                        {Requests.map((Request) => (
+                          <Col>
+                            <Card
+                              key={Request.id || Request.name}
+                              style={{ width: "18rem" }}
+                            >
+                              {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+                              <Card.Header>{Request.name}</Card.Header>
+                              <Card.Body>
+                                {/* <Card.Title>{Request.name}</Card.Title> */}
+                                <Card.Text>{Request.description}</Card.Text>
+                                <Card.Text>{Request.price}</Card.Text>
+                                <Button onClick={() => {}} variant="primary">
+                                  Offer
+                                </Button>
+                              </Card.Body>
+                              <Card.Footer className="text-muted">
+                                2 days ago
+                              </Card.Footer>
+                            </Card>
+                          </Col>
+                        ))}
+                      </Row>
+                    </div>
+                    <hr />
+
+                    {/* <Authenticator loginMechanisms={["email"]}>
+              {({ signOut, user }) => (
+                <main>
+                  <h1>Hello {user.username}</h1>
+                  <button onClick={signOuあんt}>Sign out</button>
+                </main>
+              )}
+            </Authenticator> */}
+                  </div>
+                }
+              ></Route>
+            </Routes>
+          </BrowserRouter>
         </div>
       </Container>
     </div>

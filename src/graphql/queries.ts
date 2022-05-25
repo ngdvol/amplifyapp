@@ -2,30 +2,32 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getNote = /* GraphQL */ `
-  query GetNote($id: ID!) {
-    getNote(id: $id) {
+export const getRequest = /* GraphQL */ `
+  query GetRequest($id: ID!) {
+    getRequest(id: $id) {
       id
       name
       description
       price
+      note
       createdAt
       updatedAt
     }
   }
 `;
-export const listNotes = /* GraphQL */ `
-  query ListNotes(
-    $filter: ModelNoteFilterInput
+export const listRequests = /* GraphQL */ `
+  query ListRequests(
+    $filter: ModelRequestFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listRequests(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
         description
         price
+        note
         createdAt
         updatedAt
       }
