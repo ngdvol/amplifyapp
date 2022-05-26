@@ -258,7 +258,7 @@ function App() {
                         <Row>
                           <Col>
                             <Form.Label>Item price</Form.Label>
-                            <Row>
+                            <Row className="g-2">
                               <Col>
                                 <Form.Control
                                   type="number"
