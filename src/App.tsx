@@ -210,9 +210,17 @@ function App() {
                                   description: e.target.value,
                                 })
                               }
-                              placeholder="United States"
+                              placeholder="From address"
                               value={formData.description}
                             />
+                            <Form.Select aria-label="Default select example">
+                              <option>Select country</option>
+                              <option value="United States">
+                                United States
+                              </option>
+                              <option value="Singapore">Singapore</option>
+                              <option value="Vietnam">Vietnam</option>
+                            </Form.Select>
                             <Form.Text className="text-muted">
                               From location
                             </Form.Text>
@@ -228,9 +236,17 @@ function App() {
                                   description: e.target.value,
                                 })
                               }
-                              placeholder="Singapore"
+                              placeholder="To address"
                               value={formData.description}
                             />
+                            <Form.Select aria-label="Default select example">
+                              <option>Select country</option>
+                              <option value="United States">
+                                United States
+                              </option>
+                              <option value="Singapore">Singapore</option>
+                              <option value="Vietnam">Vietnam</option>
+                            </Form.Select>
                             <Form.Text className="text-muted">
                               To location
                             </Form.Text>
@@ -253,6 +269,12 @@ function App() {
                               placeholder="Item price"
                               value={formData.price}
                             />
+                            <Form.Select aria-label="Default select example">
+                              <option>Select currency</option>
+                              <option value="USD">USD</option>
+                              <option value="VND">VND</option>
+                              <option value="SGD">SGD</option>
+                            </Form.Select>
                             <Form.Text className="text-muted">
                               Enter item price
                             </Form.Text>
