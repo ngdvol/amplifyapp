@@ -135,6 +135,18 @@ function App() {
                       </Form.Group>
 
                       <Form.Group>
+                        <Form.Label>Link to item</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="https://wwww.amazon.com/iPhone12"
+                          value={formData.name}
+                        />
+                        <Form.Text className="text-muted">
+                          Enter link to item web shop page
+                        </Form.Text>
+                      </Form.Group>
+
+                      <Form.Group>
                         <Row className="g-0">
                           <Form.Label>Photos</Form.Label>
                           <Card
