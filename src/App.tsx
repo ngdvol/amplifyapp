@@ -258,23 +258,29 @@ function App() {
                         <Row>
                           <Col>
                             <Form.Label>Item price</Form.Label>
-                            <Form.Control
-                              type="number"
-                              onChange={(e) =>
-                                setFormData({
-                                  ...formData,
-                                  price: Number(e.target.value),
-                                })
-                              }
-                              placeholder="Item price"
-                              value={formData.price}
-                            />
-                            <Form.Select aria-label="Default select example">
-                              <option>Select currency</option>
-                              <option value="USD">USD</option>
-                              <option value="VND">VND</option>
-                              <option value="SGD">SGD</option>
-                            </Form.Select>
+                            <Row>
+                              <Col>
+                                <Form.Control
+                                  type="number"
+                                  onChange={(e) =>
+                                    setFormData({
+                                      ...formData,
+                                      price: Number(e.target.value),
+                                    })
+                                  }
+                                  placeholder="Item price"
+                                  value={formData.price}
+                                />
+                              </Col>
+                              <Col>
+                                <Form.Select aria-label="Default select example">
+                                  <option>Select currency</option>
+                                  <option value="USD">USD</option>
+                                  <option value="VND">VND</option>
+                                  <option value="SGD">SGD</option>
+                                </Form.Select>
+                              </Col>
+                            </Row>
                             <Form.Text className="text-muted">
                               Enter item price
                             </Form.Text>
