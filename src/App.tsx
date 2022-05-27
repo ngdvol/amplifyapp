@@ -7,6 +7,8 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Carousel from "react-bootstrap/Carousel";
+import Image from "react-bootstrap/Image";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -77,6 +79,11 @@ function App() {
 
   return (
     <div className="App">
+      <style type="text/css">
+        {`
+
+    `}
+      </style>
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home">Proof of concept</Navbar.Brand>
@@ -117,6 +124,52 @@ function App() {
                 path="/"
                 element={
                   <div className="flex-sm-column ps-lg-5 my-4 ms-3">
+                    <Carousel className="mb-4">
+                      {/* <Carousel.Item interval={5000}>
+                        <Image
+                          className="d-block mx-auto mw-100 h-55"
+                          src="https://mediacloud.theweek.co.uk/image/private/s--KiXzXJKF--/f_auto,t_primary-image-desktop@1/v1604855211/theweek/2020/07/200717-ba-747-top.jpg"
+                          alt="Save up to $200 per flight and travel cheaper"
+                        />
+
+                        <Carousel.Caption>
+                          <h3>Save up to $200 per flight and travel cheaper</h3>
+                          <p>
+                            Offer to purchase items and travel at much cheaper
+                            prices.
+                          </p>
+                        </Carousel.Caption>
+                      </Carousel.Item>
+                      <Carousel.Item interval={5000}>
+                        <img
+                          className="d-block mx-auto mw-100 h-55"
+                          src="https://blog.aci.aero/wp-content/uploads/2019/01/shutterstock_253476913-952x635.jpg"
+                          alt="Second slide"
+                        />
+                        <Carousel.Caption>
+                          <h3>Shopping on the go</h3>
+                          <p>
+                            Purchase items on the go based on requests and
+                            travel cheaper.
+                          </p>
+                        </Carousel.Caption>
+                      </Carousel.Item> */}
+                      <Carousel.Item interval={5000}>
+                        <img
+                          className="d-block mx-auto mw-100 h-55"
+                          src="https://cdn.shopify.com/s/files/1/0070/7032/files/trending-products_c8d0d15c-9afc-47e3-9ba2-f7bad0505b9b.png?format=jpg&quality=90&v=1614559651&width=1024"
+                          alt="Third slide"
+                        />
+                        <Carousel.Caption>
+                          <h3>Buy anywhere, anytime, lower prices</h3>
+                          <p>
+                            Add an item request for your favorite items and let
+                            travellers offer you the best prices.
+                          </p>
+                        </Carousel.Caption>
+                      </Carousel.Item>
+                    </Carousel>
+
                     <h1>Add new item request</h1>
                     <Form className="row g-3 col-md-12">
                       <Form.Group>
