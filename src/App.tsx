@@ -169,251 +169,266 @@ function App() {
                         </Carousel.Caption>
                       </Carousel.Item>
                     </Carousel>
-                    <Card body className="mb-4">
-                      <h1 className="mt-2">Add new item request</h1>
-                      <Form className="row g-3 col-md-12 mt-2">
-                        <Form.Group>
-                          <Form.Label>Item name</Form.Label>
-                          <Form.Control
-                            type="text"
-                            placeholder="Item name"
-                            onChange={(e) =>
-                              setFormData({ ...formData, name: e.target.value })
-                            }
-                            value={formData.name}
-                          />
-                          <Form.Text className="text-muted">
-                            Enter item name
-                          </Form.Text>
-                        </Form.Group>
+                    <Card className="mb-4">
+                      <Card.Header as="h5">Add new item request</Card.Header>
+                      <Card body>
+                        <Card.Subtitle className="mb-2 text-muted">
+                          Item request are used for finding offers from
+                          travellers going to your location
+                        </Card.Subtitle>
+                        <Form className="row g-3 col-md-12 mt-2">
+                          <Form.Group>
+                            <Form.Label>Item name</Form.Label>
+                            <Form.Control
+                              type="text"
+                              placeholder="Item name"
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  name: e.target.value,
+                                })
+                              }
+                              value={formData.name}
+                            />
+                            <Form.Text className="text-muted">
+                              Enter item name
+                            </Form.Text>
+                          </Form.Group>
 
-                        <Form.Group>
-                          <Form.Label>Link to item</Form.Label>
-                          <Form.Control
-                            type="text"
-                            placeholder="https://wwww.amazon.com/iPhone12"
-                            value={formData.name}
-                          />
-                          <Form.Text className="text-muted">
-                            Enter link to item web shop page
-                          </Form.Text>
-                        </Form.Group>
+                          <Form.Group>
+                            <Form.Label>Link to item</Form.Label>
+                            <Form.Control
+                              type="text"
+                              placeholder="https://wwww.amazon.com/iPhone12"
+                              value={formData.name}
+                            />
+                            <Form.Text className="text-muted">
+                              Enter link to item web shop page
+                            </Form.Text>
+                          </Form.Group>
 
-                        <Form.Group>
-                          <Row className="g-0">
-                            <Form.Label>Photos</Form.Label>
-                            <Card
-                              className="col-md-auto"
-                              style={{ width: "10rem" }}
-                            >
-                              <Card.Img
-                                variant="top"
-                                src="holder.js/100px180"
-                                style={{ width: "10rem" }}
-                              />
-                              <Card.Body>
-                                <Button variant="primary">Remove</Button>
-                              </Card.Body>
-                            </Card>
-                            <Card
-                              className="col-md-auto"
-                              style={{ width: "10rem" }}
-                            >
-                              <Card.Img
-                                variant="top"
-                                src="holder.js/100px180"
-                                style={{ width: "10rem" }}
-                              />
-                              <Card.Body>
-                                <Button variant="primary">Remove</Button>
-                              </Card.Body>
-                            </Card>
-                          </Row>
-                        </Form.Group>
-
-                        <Form.Group className="">
-                          <Form.Label>Item description</Form.Label>
-                          <Form.Control
-                            type="text"
-                            as="textarea"
-                            rows={3}
-                            onChange={(e) =>
-                              setFormData({
-                                ...formData,
-                                description: e.target.value,
-                              })
-                            }
-                            placeholder="Item description"
-                            value={formData.description}
-                          />
-                          <Form.Text className="text-muted">
-                            Enter item description
-                          </Form.Text>
-                        </Form.Group>
-
-                        <Form.Group>
-                          <Row>
-                            <Col>
-                              <Form.Label>From</Form.Label>
-                              <Form.Control
-                                type="text"
-                                onChange={(e) =>
-                                  setFormData({
-                                    ...formData,
-                                    description: e.target.value,
-                                  })
-                                }
-                                placeholder="From address"
-                                value={formData.description}
-                              />
-                              <Form.Select aria-label="Default select example">
-                                <option>Select country</option>
-                                <option value="United States">
-                                  United States
-                                </option>
-                                <option value="Singapore">Singapore</option>
-                                <option value="Vietnam">Vietnam</option>
-                              </Form.Select>
-                              <Form.Text className="text-muted">
-                                From location
-                              </Form.Text>
-                            </Col>
-
-                            <Col>
-                              <Form.Label>To</Form.Label>
-                              <Form.Control
-                                type="text"
-                                onChange={(e) =>
-                                  setFormData({
-                                    ...formData,
-                                    description: e.target.value,
-                                  })
-                                }
-                                placeholder="To address"
-                                value={formData.description}
-                              />
-                              <Form.Select aria-label="Default select example">
-                                <option>Select country</option>
-                                <option value="United States">
-                                  United States
-                                </option>
-                                <option value="Singapore">Singapore</option>
-                                <option value="Vietnam">Vietnam</option>
-                              </Form.Select>
-                              <Form.Text className="text-muted">
-                                To location
-                              </Form.Text>
-                            </Col>
-                          </Row>
-                        </Form.Group>
-
-                        <Form.Group>
-                          <Row>
-                            <Col>
-                              <Form.Label>Item price</Form.Label>
-                              <Row className="g-2">
-                                <Col>
-                                  <Form.Control
-                                    type="number"
-                                    onChange={(e) =>
-                                      setFormData({
-                                        ...formData,
-                                        price: Number(e.target.value),
-                                      })
-                                    }
-                                    placeholder="Item price"
-                                    value={formData.price}
-                                  />
-                                </Col>
-                                <Col>
-                                  <Form.Select aria-label="Default select example">
-                                    <option>Select currency</option>
-                                    <option value="USD">USD</option>
-                                    <option value="VND">VND</option>
-                                    <option value="SGD">SGD</option>
-                                  </Form.Select>
-                                </Col>
-                              </Row>
-                              <Form.Text className="text-muted">
-                                Enter item price
-                              </Form.Text>
-                            </Col>
-                            <Col>
-                              <Form.Label>Quantity</Form.Label>
-                              <Form.Control
-                                type="number"
-                                onChange={(e) =>
-                                  setFormData({
-                                    ...formData,
-                                    quantity: Number(e.target.value),
-                                  })
-                                }
-                                placeholder="1"
-                                value={formData.quantity}
-                              />
-                              <Form.Text className="text-muted">
-                                How much/How many do you want to buy?
-                              </Form.Text>
-                            </Col>
-                          </Row>
-                        </Form.Group>
-
-                        <Form.Group className=""></Form.Group>
-
-                        <Form.Group className="">
-                          {/* <Form.Check type="checkbox" label="Test" /> */}
-                          <Button
-                            className="col-12"
-                            variant="primary"
-                            onClick={createRequest}
-                          >
-                            Submit
-                          </Button>{" "}
-                        </Form.Group>
-                      </Form>
-                    </Card>
-                    <Card body>
-                      <div style={{ marginTop: 15, marginBottom: 30 }}>
-                        <h1>My open requests</h1>
-                        <Row className="g-2 mt-4">
-                          {Requests.map((Request) => (
-                            <Col>
+                          <Form.Group>
+                            <Row className="g-0">
+                              <Form.Label>Photos</Form.Label>
                               <Card
-                                key={Request.id || Request.name}
-                                style={{ width: "18rem" }}
+                                className="col-md-auto"
+                                style={{ width: "10rem" }}
                               >
-                                {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-                                <Card.Header>{Request.name}</Card.Header>
+                                <Card.Img
+                                  variant="top"
+                                  src="holder.js/100px180"
+                                  style={{ width: "10rem" }}
+                                />
                                 <Card.Body>
-                                  {/* <Card.Title>{Request.name}</Card.Title> */}
-                                  <Card.Text>{Request.description}</Card.Text>
-                                  <Card.Text>${Request.price}</Card.Text>
-                                  <Card.Text>
-                                    Quantity: {Request.quantity}
-                                  </Card.Text>
-                                  <Card.Text>
-                                    Status:{" "}
-                                    {Request.isOpen
-                                      ? "Waiting offer"
-                                      : "Closed"}
-                                  </Card.Text>
-                                  <Row>
-                                    <Button
-                                      onClick={() => deleteRequest(Request)}
-                                      variant="primary"
-                                    >
-                                      Delete request
-                                    </Button>
-                                  </Row>
+                                  <Button variant="primary">Remove</Button>
                                 </Card.Body>
-                                <Card.Footer className="text-muted">
-                                  2 days ago
-                                </Card.Footer>
                               </Card>
-                            </Col>
-                          ))}
-                        </Row>
-                      </div>
+                              <Card
+                                className="col-md-auto"
+                                style={{ width: "10rem" }}
+                              >
+                                <Card.Img
+                                  variant="top"
+                                  src="holder.js/100px180"
+                                  style={{ width: "10rem" }}
+                                />
+                                <Card.Body>
+                                  <Button variant="primary">Remove</Button>
+                                </Card.Body>
+                              </Card>
+                            </Row>
+                          </Form.Group>
+
+                          <Form.Group className="">
+                            <Form.Label>Item description</Form.Label>
+                            <Form.Control
+                              type="text"
+                              as="textarea"
+                              rows={3}
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  description: e.target.value,
+                                })
+                              }
+                              placeholder="Item description"
+                              value={formData.description}
+                            />
+                            <Form.Text className="text-muted">
+                              Enter item description
+                            </Form.Text>
+                          </Form.Group>
+
+                          <Form.Group>
+                            <Row>
+                              <Col>
+                                <Form.Label>From</Form.Label>
+                                <Form.Control
+                                  type="text"
+                                  onChange={(e) =>
+                                    setFormData({
+                                      ...formData,
+                                      description: e.target.value,
+                                    })
+                                  }
+                                  placeholder="From address"
+                                  value={formData.description}
+                                />
+                                <Form.Select aria-label="Default select example">
+                                  <option>Select country</option>
+                                  <option value="United States">
+                                    United States
+                                  </option>
+                                  <option value="Singapore">Singapore</option>
+                                  <option value="Vietnam">Vietnam</option>
+                                </Form.Select>
+                                <Form.Text className="text-muted">
+                                  From location
+                                </Form.Text>
+                              </Col>
+
+                              <Col>
+                                <Form.Label>To</Form.Label>
+                                <Form.Control
+                                  type="text"
+                                  onChange={(e) =>
+                                    setFormData({
+                                      ...formData,
+                                      description: e.target.value,
+                                    })
+                                  }
+                                  placeholder="To address"
+                                  value={formData.description}
+                                />
+                                <Form.Select aria-label="Default select example">
+                                  <option>Select country</option>
+                                  <option value="United States">
+                                    United States
+                                  </option>
+                                  <option value="Singapore">Singapore</option>
+                                  <option value="Vietnam">Vietnam</option>
+                                </Form.Select>
+                                <Form.Text className="text-muted">
+                                  To location
+                                </Form.Text>
+                              </Col>
+                            </Row>
+                          </Form.Group>
+
+                          <Form.Group>
+                            <Row>
+                              <Col>
+                                <Form.Label>Item price</Form.Label>
+                                <Row className="g-2">
+                                  <Col>
+                                    <Form.Control
+                                      type="number"
+                                      onChange={(e) =>
+                                        setFormData({
+                                          ...formData,
+                                          price: Number(e.target.value),
+                                        })
+                                      }
+                                      placeholder="Item price"
+                                      value={formData.price}
+                                    />
+                                  </Col>
+                                  <Col>
+                                    <Form.Select aria-label="Default select example">
+                                      <option>Select currency</option>
+                                      <option value="USD">USD</option>
+                                      <option value="VND">VND</option>
+                                      <option value="SGD">SGD</option>
+                                    </Form.Select>
+                                  </Col>
+                                </Row>
+                                <Form.Text className="text-muted">
+                                  Enter item price
+                                </Form.Text>
+                              </Col>
+                              <Col>
+                                <Form.Label>Quantity</Form.Label>
+                                <Form.Control
+                                  type="number"
+                                  onChange={(e) =>
+                                    setFormData({
+                                      ...formData,
+                                      quantity: Number(e.target.value),
+                                    })
+                                  }
+                                  placeholder="1"
+                                  value={formData.quantity}
+                                />
+                                <Form.Text className="text-muted">
+                                  How much/How many do you want to buy?
+                                </Form.Text>
+                              </Col>
+                            </Row>
+                          </Form.Group>
+
+                          <Form.Group className=""></Form.Group>
+
+                          <Form.Group className="">
+                            {/* <Form.Check type="checkbox" label="Test" /> */}
+                            <Button
+                              className="col-12"
+                              variant="primary"
+                              onClick={createRequest}
+                            >
+                              Submit
+                            </Button>{" "}
+                          </Form.Group>
+                        </Form>
+                      </Card>
+                    </Card>
+
+                    <Card>
+                      <Card.Header as="h5">My open requests</Card.Header>
+                      <Card body>
+                        <div style={{ marginTop: 15, marginBottom: 30 }}>
+                          <Card.Subtitle className="mb-2 text-muted">
+                            See open requests waiting for offers from travellers
+                          </Card.Subtitle>
+                          <Row className="g-2 mt-4">
+                            {Requests.map((Request) => (
+                              <Col>
+                                <Card
+                                  key={Request.id || Request.name}
+                                  style={{ width: "18rem" }}
+                                >
+                                  {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+                                  <Card.Header>{Request.name}</Card.Header>
+                                  <Card.Body>
+                                    {/* <Card.Title>{Request.name}</Card.Title> */}
+                                    <Card.Text>{Request.description}</Card.Text>
+                                    <Card.Text>${Request.price}</Card.Text>
+                                    <Card.Text>
+                                      Quantity: {Request.quantity}
+                                    </Card.Text>
+                                    <Card.Text>
+                                      Status:{" "}
+                                      {Request.isOpen
+                                        ? "Waiting offer"
+                                        : "Closed"}
+                                    </Card.Text>
+                                    <Row>
+                                      <Button
+                                        onClick={() => deleteRequest(Request)}
+                                        variant="primary"
+                                      >
+                                        Delete request
+                                      </Button>
+                                    </Row>
+                                  </Card.Body>
+                                  <Card.Footer className="text-muted">
+                                    2 days ago
+                                  </Card.Footer>
+                                </Card>
+                              </Col>
+                            ))}
+                          </Row>
+                        </div>
+                      </Card>
                     </Card>
 
                     <hr />
